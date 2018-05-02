@@ -1,10 +1,15 @@
+var randomPosition = function() {
+		var number = Math.floor((Math.random() * 3) + 1);
+		return number;
+};
+
 // Enemies our player must avoid
-var Enemy = function(x, y, speed) {
+var Enemy = function() {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
-    this.x = x;
-    this.y = y;
-    this.speed = speed;
+    this.x = 0;
+    this.y = (randomPosition())*70;
+    this.speed = (randomPosition())*150;
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
@@ -21,7 +26,7 @@ Enemy.prototype.update = function(dt) {
 
     if (this.x > 510) {
       this.x = -25;
-      this.speed = 100 + Math.floor((Math.random() * 3) + 1);
+      this.speed = (randomPosition())*70;
     };
 
     // handles collision with the Player
