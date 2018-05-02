@@ -52,8 +52,12 @@ var Player = function(x, y) {
 };
 
 // Update the player's position
-Player.prototype.update = function(dt) {
-
+Player.prototype.update = function() {
+//  if (this.y < 0) {
+  //  setTimeout(function () {
+    //  this.reset();
+//    }, 0);
+//  };
 };
 
 // Draw the player on the screen, required method for game
@@ -65,17 +69,29 @@ Player.prototype.render = function() {
 Player.prototype.handleInput = function(keyCode) {
     if (keyCode === 'left' && this.x > 0) {
       this.x -= 102;
-    }
+    };
     if (keyCode === 'right' && this.x < 400) {
       this.x += 102;
-    }
+    };
     if (keyCode === 'down' && this.y < 400) {
       this.y += 85;
-    }
+    };
     if (keyCode === 'up' && this.y > 0) {
       this.y -= 85;
+    };
+    // Check for player reaching top of canvas and winning the game
+    if (this.y < 0) {
+        this.x = 200;
+        this.y = 380;
     }
 };
+
+// If the player reaches the water the game is reset
+//Player.prototype.reset = function() {
+    // move the player back to the initial location
+//    this.x = 200;
+//    this.y = 410;
+//};
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
