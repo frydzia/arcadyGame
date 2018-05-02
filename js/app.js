@@ -1,5 +1,6 @@
-var randomPosition = function() {
-		var number = Math.floor((Math.random() * 3) + 1);
+// get random position for enemy
+let randomPosition = function() {
+		let number = Math.floor((Math.random() * 3) + 1);
 		return number;
 };
 
@@ -8,7 +9,7 @@ var Enemy = function() {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
     this.x = 0;
-    this.y = (randomPosition())*70;
+    this.y = (randomPosition())*75;
     this.speed = (randomPosition())*150;
 
     // The image/sprite for our enemies, this uses
@@ -25,8 +26,8 @@ Enemy.prototype.update = function(dt) {
     this.x += this.speed * dt;
 
     if (this.x > 510) {
-      this.x = -25;
-      this.speed = (randomPosition())*70;
+      this.x = -40;
+      this.speed = (randomPosition())*75;
     };
 
     // handles collision with the Player
@@ -51,7 +52,7 @@ var Player = function(x, y) {
 };
 
 // Update the player's position
-Player.prototype.update = function() {
+Player.prototype.update = function(dt) {
 
 };
 
@@ -60,6 +61,21 @@ Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
+// player moves
+Player.prototype.handleInput = function(keyCode) {
+    if (keyCode === 'left' && this.x > 0) {
+      this.x -= 102;
+    }
+    if (keyCode === 'right' && this.x < 400) {
+      this.x += 102;
+    }
+    if (keyCode === 'down' && this.y < 400) {
+      this.y += 85;
+    }
+    if (keyCode === 'up' && this.y > 0) {
+      this.y -= 85;
+    }
+};
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
