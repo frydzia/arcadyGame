@@ -31,7 +31,10 @@ Enemy.prototype.update = function(dt) {
     };
 
     // handles collision with the Player
-
+    if (player.x > (this.x - 50) && player.x < (this.x + 50) && player.y < (this.y + 50) && player.y > (this.y - 50)) {
+      player.x = 200;
+      player.y = 410;
+    };
 };
 
 // Draw the enemy on the screen, required method for game
@@ -79,6 +82,7 @@ Player.prototype.handleInput = function(keyCode) {
     var that = this;
     if (this.y < 0) {
       setTimeout(function() {
+        alert ("You win");
         that.x = 200;
         that.y = 410;
       }, 600);
