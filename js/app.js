@@ -1,15 +1,15 @@
 // get random position for enemy
-let randomPosition = function() {
-		let number = Math.floor((Math.random() * 3) + 1);
+var randomPosition = function() {
+		var number = Math.floor((Math.random() * 3) + 1);
 		return number;
 };
 
 // Enemies our player must avoid
-var Enemy = function() {
+var Enemy = function(x, y, speed) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
     this.x = 0;
-    this.y = (randomPosition())*75;
+		this.y = y;
     this.speed = (randomPosition())*150;
 
     // The image/sprite for our enemies, this uses
@@ -92,9 +92,9 @@ Player.prototype.handleInput = function(keyCode) {
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-var enemy1 = new Enemy();
-var enemy2 = new Enemy();
-var enemy3 = new Enemy();
+var enemy1 = new Enemy(0, 62);
+var enemy2 = new Enemy(0, 144);
+var enemy3 = new Enemy(0, 228);
 var allEnemies = [enemy1, enemy2, enemy3];
 // Place the player object in a variable called player
 var player = new Player();
