@@ -4,6 +4,8 @@ It's a simple game that recreate the classic arcade game Frogger. The game was c
 ## How to Run Game
 Load index.html file in your browser.
 
+You can also see the application [here](https://frydzia.github.io/arcadyGame/).
+
 ## How to Play
 * Use arrows to navigate the board.
 * Avoid enemies (bugs).
